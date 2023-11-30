@@ -1,0 +1,33 @@
+{
+    "compileOnSave": false,
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "src/**/*.spec.ts",
+        "node_modules",
+        "dist"
+    ],
+    "types": [
+        "reflect-metadata"
+    ],
+    "typeRoots": [
+        "./types",
+        "./node_modules/@types"
+    ],
+    "compilerOptions": {
+        "incremental": false,
+        "target": "es2019",
+        "module": "commonjs",
+        "lib": [
+            "es2020"
+        ],
+        "allowJs": false,
+        "checkJs": false,
+        "declaration": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": false,
+        "forceConsistentCasingInFileNames": true
+    }
+}

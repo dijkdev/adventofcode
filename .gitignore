@@ -1,0 +1,13 @@
+.idea/
+generated/
+coverage/
+node_modules/
+dist/
+junit.xml
+sftp.json
+.vscode/
+*.log
+lib/
+
+# IDE specific files
+/*.iml
