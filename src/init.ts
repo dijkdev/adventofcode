@@ -6,7 +6,13 @@ function init() {
 
   console.log("INIT", YEAR, "DAY", DAY);
 
-  const path = __dirname + "/" + YEAR + "/" + DAY;
+  const path = import.meta.dir + "/" + YEAR + "/" + DAY;
+  const srcFile = path + "/" + "index.ts";
+  if (existsSync(srcFile)) {
+    console.log("File(s) exist already, go ahead");
+    process.exit(0);
+  }
+
   if (!existsSync(path)) {
     console.log("Should create dir", path);
     mkdirSync(path, { recursive: true });
@@ -14,7 +20,7 @@ function init() {
     console.log("exists, go ahead");
   }
 
-  ["test.txt", "input.txt"]
+  ["test1.txt", "test2.txt", "input.txt"]
     .map((file) => path + "/" + file)
     .filter((path) => !existsSync(path))
     .forEach((path) => {
@@ -22,40 +28,42 @@ function init() {
       writeFileSync(path, "");
     });
 
-  const srcFile = path + "/" + "index.ts";
-  const base = `/////////////////////
-//  THIS IS DAY ${DAY.padEnd(2, " ")} //
+  const base = `////////////////////////////////////////////
+//  THIS IS DAY ${DAY.padEnd(2, " ")}                        //
+//  https://adventofcode.com/${YEAR}/day/${DAY.padEnd(2, " ")}  //
 
 import { Part } from "../../util/part";
 import { read } from "../../util/read";
 
-function p1() {
+function p1(input: string[]) {
+
+
   return "solution";
 }
 
-function p2() {
+function p2(input: string[]) {
+
+
   return "solution";
 }
 
 export function go(day: number, part: Part = "BOTH") {
-  const input = read((l) => l);
-  console.log("Go day", day, "part", part, "#input", input.length);
-
+  const input = read((l) => l, '1');
+  console.log("Go day", day, "part", part, '#input', input.length);
+  
   if (part === "1") {
-    p1();
+    p1(input);
   } else if (part === "2") {
-    p2();
+    p2(read((l) => l, '2'));
   } else {
-    p1();
-    p2();
+    p1(input);
+    p2(read((l) => l, '2'));
   }
 }
 
 `;
 
-  //   if (!existsSync(srcFile)) {
   writeFileSync(srcFile, base);
-  //   }
 }
 
 init();
