@@ -6,7 +6,7 @@ function run() {
   const DAY = `${process.argv.at(2) ?? new Date().getDate()}`;
   const PART = (process.argv.at(3) ?? "BOTH") as Part;
 
-  const path = __dirname + "/" + YEAR + "/" + DAY;
+  const path = import.meta.dir + "/" + YEAR + "/" + DAY;
   if (!existsSync(path)) {
     console.log("Directory does not exist yet, run `bun new-day <daynr>`");
     process.exit(1);
