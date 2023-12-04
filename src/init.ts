@@ -36,15 +36,15 @@ import { Part } from "../../util/part";
 import { read } from "../../util/read";
 
 function p1(input: string[]) {
+  console.log("-- p1 ------------------");
 
 
-  return "solution";
 }
 
 function p2(input: string[]) {
+  console.log("-- p2 ------------------");
 
 
-  return "solution";
 }
 
 export function go(day: number, part: Part = "BOTH") {
@@ -54,10 +54,11 @@ export function go(day: number, part: Part = "BOTH") {
   if (part === "1") {
     p1(input);
   } else if (part === "2") {
-    p2(read((l) => l, '2'));
+    p2(input);
+    // p2(read((l) => l, '2'));
   } else {
     p1(input);
-    p2(read((l) => l, '2'));
+    p2(input);
   }
 }
 

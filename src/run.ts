@@ -1,7 +1,7 @@
 import { existsSync } from "fs";
 import { Part } from "./util/part";
 
-function run() {
+async function run() {
   const YEAR = new Date().getFullYear();
   const DAY = `${process.argv.at(2) ?? new Date().getDate()}`;
   const PART = (process.argv.at(3) ?? "BOTH") as Part;
@@ -13,7 +13,9 @@ function run() {
   }
 
   console.log("Run", YEAR, "day", DAY, "part", PART);
-  import(`./${YEAR}/${DAY}`).then((file) => file.go(DAY, PART));
+  console.time("processing time");
+  await import(`./${YEAR}/${DAY}`).then((file) => file.go(DAY, PART));
+  console.timeEnd("processing time");
 }
 
 run();
